@@ -1,0 +1,25 @@
+#add-user-form {
+  background-color: $primary;
+  padding: 50px 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    margin-top: 50px;
+  }
+  input {
+    color: white;
+  }
+  .MuiInputBase-root {
+    width: 100%;
+    &:hover {
+      border-bottom-color: #91c9ff;
+    }
+    &::before {
+      border-bottom-color: #91c9ff;
+    }
+    &::after {
+      border-bottom-color: #ffa5d8;
+    }
+  }
+}

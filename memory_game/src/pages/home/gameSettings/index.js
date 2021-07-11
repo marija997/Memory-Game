@@ -1,44 +1,32 @@
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
 import Button from "../../../components/button";
+import GameDifficulty from "./gameDifficulty";
+import UserSelection from "./userSelection";
 
 const GameSettings = () => {
-  const dispatch = useDispatch();
   const [active, setActive] = useState(false);
 
-  const handleStartGame = useCallback(
-    (mode) => {
-      return dispatch({ type: "SET_GAME_DIFFICULTY", mode: mode });
+  const handleClick = useCallback(
+    (value) => {
+      setActive(value);
     },
-    [dispatch]
+    [setActive]
   );
-
-  const handleClick = useCallback(() => {
-    setActive(!active);
-  }, [active, setActive]);
 
   return (
     <div className={`game-settings`}>
-      {active ? (
-        <div className={`game-difficulty-settings`}>
+      {active === "game-difficulty" ? (
+        <GameDifficulty />
+      ) : active === "user-selection" ? (
+        <UserSelection handleClick={handleClick} />
+      ) : (
+        <div className={`game-top-scores`}>
           <Button
-            to={`/game`}
-            text={`Easy`}
-            handleClick={() => handleStartGame("easy")}
-          />
-          <Button
-            to={`/game`}
-            text={`Medium`}
-            handleClick={() => handleStartGame("medium")}
-          />
-          <Button
-            to={`/game`}
-            text={`Hard`}
-            handleClick={() => handleStartGame("hard")}
+            to={""}
+            text={`Start Game`}
+            handleClick={() => handleClick("user-selection")}
           />
         </div>
-      ) : (
-        <Button to={""} text={`Start Game`} handleClick={handleClick}></Button>
       )}
     </div>
   );

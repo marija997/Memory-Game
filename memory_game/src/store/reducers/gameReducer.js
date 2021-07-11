@@ -3,7 +3,7 @@ import {
   CHECK_PAIR,
   FLIP_CARD,
   FLIP_DOWN_PAIR,
-  RESTART_GAME,
+  NEW_GAME,
 } from "../actions/gameActions";
 import { generateCards } from "../../pages/game/helper";
 
@@ -158,16 +158,18 @@ export default function memory(state = initialState, action) {
       });
       return resetFlippedCards;
 
-    case RESTART_GAME:
-      return {
+    case NEW_GAME:
+      const newGame = {
+        mode: state.mode,
+        maxNumberOfPairs: state.maxNumberOfPairs,
+      };
+      Object.assign(newGame, {
         move: 1,
         time: 0,
         guess1: null,
         guess2: null,
         cards: generateCards(),
-        maxNumberOfPairs: 20,
-        mode: "hard",
-      };
+      });
 
     default:
       return state;

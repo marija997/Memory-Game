@@ -8,7 +8,6 @@ const App = () => {
   return (
     <div id={`app`}>
       <Router>
-        {/* <Sidebar /> */}
         <Switch>
           <Route exact path={`/`} component={Home}></Route>
           <Route path={`/game`} component={Game}></Route>

@@ -1,5 +1,5 @@
 export const SET_GAME_DIFFICULTY = "SET_GAME_DIFFICULTY";
-export const RESTART_GAME = "RESTART_GAME";
+export const NEW_GAME = "NEW_GAME";
 export const FLIP_CARD = "FLIP_CARD";
 export const CHECK_PAIR = "CHECK_PAIR";
 export const FLIP_DOWN_PAIR = "FLIP_DOWN_PAIR";
@@ -31,8 +31,8 @@ export function flipDownPair() {
   };
 }
 
-export function restart() {
-  return { type: RESTART_GAME };
+export function newGame() {
+  return { type: NEW_GAME };
 }
 
 export function endGame() {

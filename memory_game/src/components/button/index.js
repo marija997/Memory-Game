@@ -1,9 +1,14 @@
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Button = ({ to = "#", text = "Text", handleClick = () => {} }) => {
+const Button = ({
+  to = "#",
+  text = "Text",
+  handleClick = () => {},
+  type = "submit",
+}) => {
   const [animation, setAnimation] = useState(false);
-  console.log(handleClick);
+
   const handleAnimation = useCallback(() => {
     setAnimation(!animation);
   }, [animation, setAnimation]);
@@ -14,6 +19,7 @@ const Button = ({ to = "#", text = "Text", handleClick = () => {} }) => {
       onClick={handleClick}
       className={`bubbly-button ${animation ? "animate" : ""}`}
       onMouseOver={handleAnimation}
+      type={type}
     >
       <svg width="300px" height="60px" viewBox="0 0 300 60" className="border">
         <polyline points="299,1 299,59 1,59 1,1 299,1" className="bg-line" />

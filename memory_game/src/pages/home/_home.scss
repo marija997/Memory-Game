@@ -1,7 +1,11 @@
+@import "./gameSettings/addUser/addUser";
 .home {
   @import "./gameSettings/gameSetting";
+
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  margin-top: 100px;
+  overflow: hidden;
 }

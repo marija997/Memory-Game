@@ -1,0 +1,50 @@
+.card {
+  .card-back {
+    &.match {
+      background: $success;
+      font-size: 33px;
+      backface-visibility: hidden;
+      cursor: default;
+    }
+  }
+
+  &.wrong {
+    .card-back {
+      cursor: default;
+      background: $error;
+    }
+  }
+
+  .card-front,
+  .card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-front {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+    background: $primary;
+  }
+
+  .card-back {
+    background-color: #8093da;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    position: absolute;
+    cursor: default;
+    transform: rotateY(180deg);
+    font-size: 33px;
+  }
+
+  &.flip {
+    transform: rotateY(180deg);
+  }
+}

@@ -40,7 +40,7 @@ const GameRender = memo(
       <div className={`game ${gameMode}`}>
         <Particles />
         <GameToolbar endGame={endGame} />
-        {1 ? (
+        {endGame ? (
           <GameOver />
         ) : (
           <div id="board" className="board">

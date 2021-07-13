@@ -5,5 +5,11 @@
   .digits {
     font-size: 50px;
     font-weight: 500;
+    @media screen and(max-width:1280px) {
+      font-size: 36px;
+    }
+    @media screen and(max-width:768px) {
+      font-size: 20px;
+    }
   }
 }

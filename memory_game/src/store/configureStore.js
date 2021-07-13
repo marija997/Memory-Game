@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 import rootReducer from "./rootReducer";
-// import { persistingDataFunction } from "./persistedState";
+import { persistingDataFunction } from "./persistedState";
 
 const store = createStore(
   rootReducer,
@@ -10,6 +10,6 @@ const store = createStore(
     : (f) => f
 );
 
-// persistingDataFunction(store);
+persistingDataFunction(store);
 
 export default store;

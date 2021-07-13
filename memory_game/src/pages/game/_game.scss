@@ -8,9 +8,8 @@
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  min-height: 100vh;
   .board {
-    min-height: 450px;
-    min-width: 500px;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 10px 10px 0 0 rgba(46, 61, 73, 0.2);
@@ -22,11 +21,23 @@
     background: linear-gradient(to bottom, #4ac4bc80, #5897b180, #9c85cb80);
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    @media screen and(max-width:768px) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
   }
   &.easy {
     .board {
-      min-height: 300px;
-      min-width: 30rem;
+      grid-template-columns: repeat(4, 1fr);
+      @media screen and(max-width:768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+    }
+  }
+  &.medium {
+    .board {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -37,21 +48,4 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.card {
-  height: 150px;
-  width: 150px;
-  font-size: 0;
-  color: #ffffff;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease;
 }

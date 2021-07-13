@@ -1,0 +1,45 @@
+.score-board {
+  @import "./tabs/tabsHeading/tabsHeading";
+
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  .tabs-container {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    .tabs-content {
+      border: 1px solid white;
+      border-top: none;
+      background-color: #ffa5d850;
+      &.medium {
+        background-color: #94deeb50;
+      }
+      &.easy {
+        background-color: #a3d92650;
+      }
+      .user {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+        padding: 10px;
+        padding-left: 60px;
+        border: 1px solid white;
+
+        .users-place {
+          position: absolute;
+          align-self: center;
+          left: 10px;
+          border: 1px solid white;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

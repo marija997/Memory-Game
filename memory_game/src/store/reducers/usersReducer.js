@@ -1,25 +1,24 @@
 import { ADD_USER, SET_ACTIVE_USER } from "../actions/usersActions";
-// import { persistedUsers } from "../persistedState";
+import { persistedUsers } from "../persistedState";
 
 const initialState = {
   activeUser: null,
-  users: [
-    {
-      id: 1,
-      username: "John",
-      scores: [{ mode: "hard", time: "00:30", username: "John" }],
-    },
-    {
-      id: 2,
-      username: "Jane",
-      scores: [{ mode: "hard", time: "00:40", username: "Jane" }],
-    },
-    {
-      id: 3,
-      username: "Dan",
-      scores: [{ mode: "hard", time: "00:45", username: "Dan" }],
-    },
-  ],
+  users: persistedUsers
+    ? JSON.parse(persistedUsers)
+    : [
+        {
+          id: 1,
+          username: "John",
+        },
+        {
+          id: 2,
+          username: "Jane",
+        },
+        {
+          id: 3,
+          username: "Dan",
+        },
+      ],
 };
 
 export default function memory(state = initialState, action) {
@@ -29,8 +28,10 @@ export default function memory(state = initialState, action) {
       let newUser = {
         id: state.users.length + 1,
         username: action.user,
-        scores: [],
       };
+      let usersJson = JSON.stringify([...state.users, newUser]);
+      localStorage.setItem("users", usersJson);
+
       Object.assign(newState, {
         activeUser: newUser,
         users: [...state.users, newUser],

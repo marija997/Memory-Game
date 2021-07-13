@@ -4,6 +4,7 @@ import {
   FLIP_CARD,
   FLIP_DOWN_PAIR,
   NEW_GAME,
+  SET_END_TIME,
 } from "../actions/gameActions";
 import { generateCards } from "../../pages/game/helper";
 
@@ -13,13 +14,29 @@ const initialState = {
   numOfFoundPairs: 0,
   guess1: null,
   guess2: null,
-  maxNumberOfPairs: 10,
-  cards: generateCards(10),
-  mode: "hard",
+  cards: [],
 };
 
 export default function memory(state = initialState, action) {
   switch (action.type) {
+    case NEW_GAME:
+      // let mode = state.mode ? state.mode : "hard";
+      let mode = state.mode;
+      // let maxPairs = state.maxNumberOfPairs ? state.maxNumberOfPairs : 10;
+      let maxPairs = state.maxNumberOfPairs;
+      let initGameState = {};
+      Object.assign(initGameState, {
+        move: 1,
+        time: 0,
+        numOfFoundPairs: 0,
+        guess1: null,
+        guess2: null,
+        cards: generateCards(maxPairs),
+        mode: mode,
+        maxNumberOfPairs: maxPairs,
+      });
+      return initGameState;
+
     case SET_GAME_DIFFICULTY:
       let gameState = { ...state, mode: action.mode };
       if (action.mode === "easy") {
@@ -158,18 +175,10 @@ export default function memory(state = initialState, action) {
       });
       return resetFlippedCards;
 
-    case NEW_GAME:
-      const newGame = {
-        mode: state.mode,
-        maxNumberOfPairs: state.maxNumberOfPairs,
-      };
-      Object.assign(newGame, {
-        move: 1,
-        time: 0,
-        guess1: null,
-        guess2: null,
-        cards: generateCards(),
-      });
+    case SET_END_TIME:
+      let timeState = { ...state };
+      Object.assign(timeState, { time: action.timeState });
+      return timeState;
 
     default:
       return state;

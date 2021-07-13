@@ -1,9 +1,17 @@
-export const localStorageKey = "users";
-export const persistedUsers = localStorage.getItem(localStorageKey);
+export const persistedUsers = localStorage.getItem("users");
+export const persistedScores = localStorage.getItem("scores");
 
 // inside this function we define all the date we want to persistingDataFunction, even if customer leaves app
 export const persistingDataFunction = (store) => {
-  console.log(store.getState().users.users);
-  const users = persistedUsers ? persistedUsers : store.getState().users.users;
+  let users = persistedUsers
+    ? persistedUsers
+    : JSON.stringify(store.getState().users.users);
+
+  let scores = persistedScores
+    ? persistedScores
+    : JSON.stringify(store.getState().scoreboard.scores);
+
+  //setting data into the local storage
   localStorage.setItem("users", users);
+  localStorage.setItem("scores", scores);
 };

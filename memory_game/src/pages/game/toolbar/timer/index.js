@@ -1,7 +1,9 @@
+import { ContactSupportOutlined } from "@material-ui/icons";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Timer = ({ endGame }) => {
+  const dispatch = useDispatch();
   const numberOfMoves = useSelector((store) => store.memory.move);
   const [isActive, setIsActive] = useState(false);
   const [time, setTime] = useState(0);
@@ -31,6 +33,8 @@ const Timer = ({ endGame }) => {
   useEffect(() => {
     if (endGame) {
       setIsActive(false);
+      let timeState = Math.floor((time / 1000) % 60);
+      dispatch({ type: "SET_END_TIME", timeState });
     }
   }, [endGame]);
 

@@ -25,7 +25,7 @@ const Card = ({ card }) => {
       onClick={handleFlip}
     >
       <div className={`card-back ${card.discovered ? "match" : ""}`}>
-        <FontAwesomeIcon icon={card?.icon} invert="true" />
+        <FontAwesomeIcon icon={card?.icon} invert />
       </div>
       <div className={`card-front `}></div>
     </div>

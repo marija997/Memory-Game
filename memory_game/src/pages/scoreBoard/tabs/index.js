@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import TabsHeading from "./tabsHeading";
 
-const Tabs = ({}) => {
+const Tabs = () => {
   const scores = useSelector((store) => store.scoreboard.scores);
   const [activeTab, setActiveTab] = useState("hard");
 

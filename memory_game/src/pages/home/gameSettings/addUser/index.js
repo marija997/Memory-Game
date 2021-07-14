@@ -21,12 +21,12 @@ const AddUser = ({ handleClick }) => {
 
   const handleCloseModal = useCallback(() => {
     setShowForm(!showForm);
-  });
+  }, [setShowForm, showForm]);
 
   return (
     <div className={`add-user`}>
       <div onClick={() => setShowForm(!showForm)} className={`add-new-user`}>
-        <FontAwesomeIcon icon={faPlus} invert="true" />
+        <FontAwesomeIcon icon={faPlus} invert />
       </div>
       <Drawer
         open={showForm}

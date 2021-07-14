@@ -16,13 +16,13 @@
   .MuiInputBase-root {
     width: 100%;
     &:hover {
-      border-bottom-color: #91c9ff;
+      border-bottom-color: $blue;
     }
     &::before {
-      border-bottom-color: #91c9ff;
+      border-bottom-color: $blue;
     }
     &::after {
-      border-bottom-color: #ffa5d8;
+      border-bottom-color: $pink;
     }
   }
 }

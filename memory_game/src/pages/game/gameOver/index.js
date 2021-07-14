@@ -21,7 +21,7 @@ const GameOver = () => {
         },
       });
     }
-  }, [gameTime]);
+  }, [gameTime, dispatch, username, gameScore]);
 
   return (
     <div className={`game-over`}>

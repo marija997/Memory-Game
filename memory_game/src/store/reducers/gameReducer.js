@@ -20,9 +20,7 @@ const initialState = {
 export default function memory(state = initialState, action) {
   switch (action.type) {
     case NEW_GAME:
-      // let mode = state.mode ? state.mode : "hard";
       let mode = state.mode;
-      // let maxPairs = state.maxNumberOfPairs ? state.maxNumberOfPairs : 10;
       let maxPairs = state.maxNumberOfPairs;
       let initGameState = {};
       Object.assign(initGameState, {

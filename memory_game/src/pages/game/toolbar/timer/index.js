@@ -1,4 +1,3 @@
-import { ContactSupportOutlined } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -36,7 +35,7 @@ const Timer = ({ endGame }) => {
       let timeState = Math.floor((time / 1000) % 60);
       dispatch({ type: "SET_END_TIME", timeState });
     }
-  }, [endGame]);
+  }, [endGame, dispatch, time]);
 
   return (
     <div className={`timer`}>

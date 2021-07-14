@@ -13,7 +13,7 @@ const GameRender = memo(
 
     useEffect(() => {
       dispatch({ type: "NEW_GAME" });
-    }, []);
+    }, [dispatch]);
 
     const cards = useSelector((store) => store.memory.cards);
     const checkPair = useSelector((store) => store.memory.checkPair);

@@ -18,6 +18,11 @@
     width: 15vw;
   }
 
+  @media screen and(max-width:580px) {
+    height: 17vw;
+    width: 17vw;
+  }
+
   .card-back {
     &.match {
       background: $success;

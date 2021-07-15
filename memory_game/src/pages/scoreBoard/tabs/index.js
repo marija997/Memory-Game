@@ -24,7 +24,10 @@ const Tabs = () => {
           }:${seconds}`;
 
           return (
-            <div key={`score-user-${user.username}`} className={`user`}>
+            <div
+              key={`score-user-${user.username}-${index}`}
+              className={`user`}
+            >
               <span className={`users-place`}>{index + 1}</span>
               <p>Username: {user.username}</p>
               <p>Number of moves: {user.moves}</p>

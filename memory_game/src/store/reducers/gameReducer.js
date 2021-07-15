@@ -5,6 +5,7 @@ import {
   FLIP_DOWN_PAIR,
   NEW_GAME,
   SET_END_TIME,
+  END_GAME,
 } from "../actions/gameActions";
 import { generateCards } from "../../pages/game/helper";
 
@@ -121,7 +122,7 @@ export default function memory(state = initialState, action) {
           guess2: null,
           numOfFoundPairs: state.numOfFoundPairs + 1,
           cards: state.cards.map((card) => {
-            return card.id === secondGuessRel.rel || card.id === state.guess1
+            return card.id === secondGuessRel?.rel || card.id === state.guess1
               ? Object.assign({}, card, {
                   flipped: true,
                   discovered: true,
@@ -137,7 +138,7 @@ export default function memory(state = initialState, action) {
           flipDownPair: true,
           numOfFoundPairs: state.numOfFoundPairs,
           cards: state.cards.map((card) => {
-            return card.id === secondGuessRel.rel || card.id === state.guess1
+            return card.id === secondGuessRel?.rel || card.id === state.guess1
               ? Object.assign({}, card, {
                   flipped: true,
                   wrong: true,
@@ -177,6 +178,21 @@ export default function memory(state = initialState, action) {
       let timeState = { ...state };
       Object.assign(timeState, { time: action.timeState });
       return timeState;
+
+    case END_GAME:
+      let endGameState = {};
+      Object.assign(endGameState, {
+        move: 1,
+        time: 0,
+        numOfFoundPairs: 0,
+        guess1: null,
+        guess2: null,
+        cards: state.cards,
+        mode: state.mode,
+        maxNumberOfPairs: state.maxNumberOfPairs,
+      });
+
+      return endGameState;
 
     default:
       return state;

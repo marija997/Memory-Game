@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { faPlus } from "@fortawesome/fontawesome-free-solid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useState } from "react";
-import { Drawer, Input, Button } from "@material-ui/core";
+import { Input, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 
 const AddUser = ({ handleClick }) => {
@@ -26,14 +26,13 @@ const AddUser = ({ handleClick }) => {
   return (
     <div className={`add-user`}>
       <div onClick={() => setShowForm(!showForm)} className={`add-new-user`}>
-        <FontAwesomeIcon icon={faPlus} invert />
+        <FontAwesomeIcon icon={faPlus} invert={"true"} />
       </div>
-      <Drawer
-        open={showForm}
-        onClose={handleCloseModal}
-        anchor={`bottom`}
-        className={`add-user-drawer`}
-      >
+      <div
+        className={`form-drawer-backdrop ${showForm && "active"}`}
+        onClick={handleCloseModal}
+      ></div>
+      <div className={`form-drawer ${showForm && "active"}`}>
         <form
           id={`add-user-form`}
           onSubmit={handleSubmit(handleAddUser)}
@@ -47,7 +46,7 @@ const AddUser = ({ handleClick }) => {
             Add User
           </Button>
         </form>
-      </Drawer>
+      </div>
     </div>
   );
 };

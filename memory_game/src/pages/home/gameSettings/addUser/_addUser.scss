@@ -1,28 +1,71 @@
-#add-user-form {
-  background-color: $primary;
-  padding: 50px 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media screen and(max-width:992px) {
-    padding: 50px;
+.add-user {
+  .form-drawer-backdrop {
+    &.active {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9;
+      opacity: 1;
+      transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      display: flex;
+      position: fixed;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      -webkit-tap-highlight-color: transparent;
+    }
   }
-  button {
-    margin-top: 50px;
-  }
-  input {
-    color: white;
-  }
-  .MuiInputBase-root {
+  .form-drawer {
+    position: fixed;
+    left: 0;
     width: 100%;
-    &:hover {
-      border-bottom-color: $blue;
+    z-index: 9;
+    bottom: 0;
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    height: 200px;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transform: translateY(200px);
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      height: 200px;
+      transition: all 0.5s ease-in-out;
+      transform: translateY(0);
     }
-    &::before {
-      border-bottom-color: $blue;
+  }
+  #add-user-form {
+    background-color: $primary;
+    padding: 50px 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media screen and(max-width:992px) {
+      padding: 50px;
     }
-    &::after {
-      border-bottom-color: $pink;
+    button {
+      margin-top: 50px;
+    }
+    input {
+      color: white;
+    }
+    .MuiInputBase-root {
+      width: 100%;
+      &:hover {
+        border-bottom-color: $blue;
+      }
+      &::before {
+        border-bottom-color: $blue;
+      }
+      &::after {
+        border-bottom-color: $pink;
+      }
     }
   }
 }

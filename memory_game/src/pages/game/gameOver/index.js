@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Title from "../../../components/title";
 import Button from "../../../components/button";
@@ -9,8 +9,12 @@ const GameOver = () => {
   const username = useSelector((store) => store.users.activeUser.username);
   const gameTime = useSelector((store) => store.memory.time);
 
+  const endGame = useCallback(() => {
+    dispatch({ type: "END_GAME" });
+  }, [dispatch]);
+
   useEffect(() => {
-    if (gameTime) {
+    if (gameTime && gameTime > 0) {
       dispatch({
         type: "ADD_RESULT_TO_SCOREBOARD",
         score: {
@@ -31,8 +35,12 @@ const GameOver = () => {
       </div>
       <br />
       <div className={`buttons`}>
-        <Button text={`Back to Home`} to={`/`} />
-        <Button text={`Go To Score Board`} to={`/score-board`} />
+        <Button text={`Back to Home`} to={`/`} handleClick={endGame} />
+        <Button
+          text={`Go To Score Board`}
+          to={`/score-board`}
+          handleClick={endGame}
+        />
       </div>
     </div>
   );
